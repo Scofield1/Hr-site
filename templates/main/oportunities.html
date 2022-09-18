@@ -1,0 +1,73 @@
+{% extends 'partial/base.html' %}
+{% block title %} Opportunities {% endblock title %}
+
+{% block navbar %}
+    <i class="text-warning fas fa-code"></i> Job oppportunities
+{% endblock %}
+
+{% block link %}
+<a href="{% url 'index' %}" style="font-size: 25px;">
+    <i class="text-warning fas fa-angle-double-left"></i>
+</a>
+{% endblock link %}
+
+{% block content %}
+<section>
+    <div class="container mt-4" style="width:80%;">
+        <div class="justify-content-center align-items-center row">
+            <h6 class="btn btn-warning" style="width: 100%; cursor: default;">
+                <strong>
+                    AVAILABLE JOB OPPORTUNITIES
+                </strong>
+            </h6>
+
+            <div class="card p-3" style="background-color: rgba(0, 0, 0, 0.5)">
+                <div class="row">
+                    <div class="col-sm-6 col-xl-3 p-1">
+                        <div class="card" style="background-color: transparent;">
+                            <button class="btn btn-outline-warning btn-lg jobs" data-bs-toggle="modal" data-bs-target="#frontendModal">
+                                <i class="fab fa-react fa-5x"></i>
+                                <br><br>
+                                Front End
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3 p-1">
+                        <div class="card" style="background-color: transparent;">
+                            <button class="btn btn-outline-warning btn-lg jobs" data-bs-toggle="modal" data-bs-target="#backendModal">
+                                <i class="fab fa-python fa-5x"></i>
+                                <br><br>
+                                Back End
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3 p-1">
+                        <div class="card" style="background-color: transparent;">
+                            <button class="btn btn-outline-warning btn-lg jobs" data-bs-toggle="modal" data-bs-target="#fullstackModal">
+                                <i class="fab fa-node-js fa-5x"></i>
+                                <br><br>
+                                Fullstack
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3 p-1">
+                        <div class="card" style="background-color: transparent;">
+                            <button class="btn btn-outline-light btn-lg jobs" disabled>
+                                <i class="fas fa-file-code fa-5x"></i>
+                                <br><br>
+                                Internship (closed)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="preloader" class="mt-5"></div>
+<div id="bg-spinner">
+    <div id="position-spinner">
+        <span id="spinner"></span>
+    </div>
+</div>
+ {% endblock content %}

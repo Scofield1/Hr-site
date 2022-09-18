@@ -1,0 +1,58 @@
+<!-- Modal -->
+<div class="modal text-dark fade close-modal" {% block modal-id %} {% endblock modal-id %} tabindex="-1"
+     aria-labelledby="defaultModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="defaultModalLabel"><i class="fas fa-code"></i> {% block modal-title %} {% endblock modal-title %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form {% block form-action %} {% endblock form-action %} method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon"><i class="fas fa-user-alt"></i></span>
+                        <input type="text" {% block id-name %} {% endblock id-name %} name="name" class="form-control" placeholder="Fullname" aria-label="Username"
+                               aria-describedby="basic-addon">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-universal-access"></i></span>
+                        <input type="text" {% block id-age %} {% endblock id-age %} name="age" class="form-control" placeholder="Your Age..."
+                               aria-label="Username"
+                               aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon2"><i class="fas fa-envelope"></i></span>
+                        <input type="text" {% block id-email %} {% endblock id-email %}  name="email" class="form-control" placeholder="Your Email..."
+                               aria-label="Username"
+                               aria-describedby="basic-addon2">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon3"><i class="fas fa-phone"></i></span>
+                        <input type="text" {% block id-phone %} {% endblock id-phone %} name="phone" class="form-control phone" placeholder="Phone Number"
+                               aria-label="Username"
+                               aria-describedby="basic-addon3">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon4"><i class="fas fa-map-marker-alt"></i></span>
+                        <input type="text" {% block id-address %} {% endblock id-address %} name="address" class="form-control" placeholder="Your Address..."
+                               aria-label="Username"
+                               aria-describedby="basic-addon4">
+                    </div>
+                    <textarea name="experience" {% block id-experience %} {% endblock id-experience %} placeholder="Tell us about about yourself..."
+                              class="form-control mb-3"
+                              cols="5" rows="3"></textarea>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label"><i class="fas fa-cloud-upload-alt"></i> Upload Your
+                            Resume</label>
+                        <input class="form-control" {% block id-file %} {% endblock id-file %} name="file" type="file" id="formFile" accept="application/pdf">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-outline-secondary btn-cancel" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-sm btn-secondary btn-send">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
