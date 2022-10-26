@@ -57,8 +57,80 @@ def email_frontend(request):
             messages.success(request, 'Frontend resume succefully!')
             return redirect('/')
 def email_backend(request):
-    return render(request, '')
+    if request.method == 'POST':
+        if Registered_mail.objects.filter(email=request.POST['email']).exists():
+            messages.error(request, 'We already have your resume in our database')
+            return redirect('opportunities')
+        else:
+            name = request.POST.get('name')
+            age = request.POST.get('age')
+            email = request.POST.get('email')
+            phone = request.POST.get('phone')
+            address = request.POST.get('address')
+            experience = request.POST.get('experience')
+            file = request.FILES['file']
+            template = loader.get_template('resume_form.txt')
+
+            save_mail = Registered_mail(email=email)
+            save_mail.save()
+
+            context = {
+                'name': name,
+                'age': age,
+                'email': email,
+                'phone': phone,
+                'address': address,
+                'experience': experience,
+                'message': messages,
+            }
+            message = template.render(context)
+            email = EmailMultiAlternatives(
+                'Backend - Candidate', message,
+                'Backend Opportunity',
+                [os.getenv('EMAIL_HOST_USER')]
+            )
+            email.content_subtype = 'html'
+            email.attach(file.name, file.read(), file.content_type)
+            email.send()
+            messages.success(request, 'Backend resume succefully!')
+            return redirect('/')
 
 
 def email_fullstack(request):
-    return render(request, '')
+    if request.method == 'POST':
+        if Registered_mail.objects.filter(email=request.POST['email']).exists():
+            messages.error(request, 'We already have your resume in our database')
+            return redirect('opportunities')
+        else:
+            name = request.POST.get('name')
+            age = request.POST.get('age')
+            email = request.POST.get('email')
+            phone = request.POST.get('phone')
+            address = request.POST.get('address')
+            experience = request.POST.get('experience')
+            file = request.FILES['file']
+            template = loader.get_template('resume_form.txt')
+
+            save_mail = Registered_mail(email=email)
+            save_mail.save()
+
+            context = {
+                'name': name,
+                'age': age,
+                'email': email,
+                'phone': phone,
+                'address': address,
+                'experience': experience,
+                'message': messages,
+            }
+            message = template.render(context)
+            email = EmailMultiAlternatives(
+                'Fullstack - Candidate', message,
+                'Fullstack Opportunity',
+                [os.getenv('EMAIL_HOST_USER')]
+            )
+            email.content_subtype = 'html'
+            email.attach(file.name, file.read(), file.content_type)
+            email.send()
+            messages.success(request, 'Fullstack resume succefully!')
+            return redirect('/')
